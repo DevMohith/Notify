@@ -10,10 +10,9 @@ app.use(express.json());
 app.use(cors());
 
 //db connection
-// Check if MONGO_URI is correctly loaded
 if (!process.env.MONGO_URI) {
     console.error("❌ ERROR: MONGO_URI is missing in .env file.");
-    process.exit(1); // Stop the server if the database URL is missing
+    process.exit(1);
 }
 
 mongoose.connect(process.env.MONGO_URI)
