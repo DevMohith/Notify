@@ -3,17 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notify - New Product Alerts</title>
+    <title>Notify - Stay Updated</title>
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
-    <h1>Subscribe to Notifications</h1>
-    <input type="email" id="emailInput" placeholder="Enter your email" />
-    <button id="subscribeBtn">Subscribe</button>
 
-    <h1>Add a New Product</h1>
-    <input type="text" id="productInput" placeholder="Enter product name" />
-    <button id="addProductBtn">Add Product</button>
+    
+    <div class="main">
+        <div class="main-content">
+            <h1>🚀 Notify - Stay Updated</h1>
+            <p>Get notified instantly when new products arrive!</p>
 
-    <script src="script.js"></script>
+            <div class="form-container">
+                <input type="email" id="emailInput" placeholder="Enter your email">
+                <button id="subscribeBtn">Subscribe</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-section">
+        <h2>📦 Add a New Product</h2>
+        <p>Notify your subscribers about new products.</p>
+
+        <div class="form-container">
+            <input type="text" id="productInput" placeholder="Enter product name">
+            <button id="addProductBtn">Add Product</button>
+        </div>
+    </div>
 </body>
 </html>
