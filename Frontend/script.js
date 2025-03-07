@@ -1,3 +1,5 @@
+const backendUrl = "http://localhost:5000";  // Make sure this matches your server's URL
+
 document.getElementById("subscribeBtn").addEventListener("click", async () => {
     const email = document.getElementById("emailInput").value;
     if (!email) {

@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const express = require("express");
 const nodemailer = require("nodemailer");
 const mongoose = require("mongoose");
@@ -9,14 +10,19 @@ app.use(express.json());
 app.use(cors());
 
 //db connection
-mongoose.connect("mongodb://localhost:27017/notifyDB",{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+// Check if MONGO_URI is correctly loaded
+if (!process.env.MONGO_URI) {
+    console.error("❌ ERROR: MONGO_URI is missing in .env file.");
+    process.exit(1); // Stop the server if the database URL is missing
+}
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("✅ MongoDB Connected"))
+    .catch(err => console.error("❌ MongoDB Connection Error:", err));
 
 //schema
-const Product = mongoose.model("Product", new mongoose.Schema({name: string}));
-const Subscriber = mongoose.model("Subscriber", new mongoose.Schema({email: string}) );
+const Product = mongoose.model("Product", new mongoose.Schema({ name: String }));
+const Subscriber = mongoose.model("Subscriber", new mongoose.Schema({ email: String }) );
 
 //nodemailer
 const transporter = nodemailer.createTransport({
