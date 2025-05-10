@@ -11,13 +11,13 @@ app.use(cors());
 
 //db connection
 if (!process.env.MONGO_URI) {
-    console.error("❌ ERROR: MONGO_URI is missing in .env file.");
+    console.error("ERROR: MONGO_URI is missing in .env file.");
     process.exit(1);
 }
 
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log("✅ MongoDB Connected"))
-    .catch(err => console.error("❌ MongoDB Connection Error:", err));
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.error("MongoDB Connection Error:", err));
 
 //schema
 const Product = mongoose.model("Product", new mongoose.Schema({ name: String }));
@@ -36,7 +36,7 @@ const transporter = nodemailer.createTransport({
 app.post("/subscribe", async(req, res)=>{
     const { email } = req.body;
     await Subscriber.create({ email });
-    res.status(201).json({ message: "Subscribed Successfully! Take a bow 🙇"});
+    res.status(201).json({ message: "Subscribed Successfully!"});
 });
 
 app.post("/add-product", async (req, res) => {
